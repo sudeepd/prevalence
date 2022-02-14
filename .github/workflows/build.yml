@@ -1,0 +1,33 @@
+#Check out , create release directory, use action
+name: action test service
+on: [ push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v2
+        with:
+          path: ${{github.workspace}}/prevalence
+      -
+        name : create release
+        working-directory: ${{github.workspace}}/prevalence
+        run: |
+          mkdir  -p  release
+          mv client release
+
+      - 
+        name: copy artifacts to devops
+        uses: sudeepd/release-copier@v0.1
+        with:
+          project-name: prevalence
+          project-dir: ${{github.workspace}}/prevalence/release
+          project-version: 0.1.0
+          project-image-tag: latest
+          project-image: image
+          dst-repo: sudeepd/configurator
+          dst-ref: master
+          dst-token: ${{ secrets.GITHUB_TOKEN }}
+
+
