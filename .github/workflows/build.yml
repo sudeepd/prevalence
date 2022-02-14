@@ -19,7 +19,7 @@ jobs:
 
       - 
         name: copy artifacts to devops
-        uses: sudeepd/release-copier@v0.1
+        uses: sudeepd/release-copier@v0.2
         with:
           project-name: prevalence
           project-dir: ${{github.workspace}}/prevalence/release
