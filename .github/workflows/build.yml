@@ -28,6 +28,6 @@ jobs:
           project-image: image
           dst-repo: sudeepd/configurator
           dst-ref: master
-          dst-token: ${{ secrets.DEVPOS_PAT }}
+          dst-token: ${{ secrets.DEVOPS_PAT }}
 
 
